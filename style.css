@@ -132,4 +132,20 @@ button[onclick="logoutAdmin()"] {
     input, select, button { padding: 15px !important; font-size: 16px !important; }
     h2 { font-size: 20px !important; }
 }
+    @media screen and (max-width: 600px) {
+    body { padding: 10px !important; }
+    .main-wrapper { width: 100% !important; max-width: 100% !important; }
+    .service-card { padding: 20px !important; }
+    input, select, button { padding: 15px !important; font-size: 16px !important; }
+    h2 { font-size: 20px !important; }
+}
+
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
 }
