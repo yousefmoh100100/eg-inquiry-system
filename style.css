@@ -125,4 +125,11 @@ button[onclick="logoutAdmin()"] {
     border-radius: 12px;
     display: none;
     font-size: 15px;
+    @media screen and (max-width: 600px) {
+    body { padding: 10px !important; }
+    .main-wrapper { width: 100% !important; max-width: 100% !important; }
+    .service-card { padding: 20px !important; }
+    input, select, button { padding: 15px !important; font-size: 16px !important; }
+    h2 { font-size: 20px !important; }
+}
 }
