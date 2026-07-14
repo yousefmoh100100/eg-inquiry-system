@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <!-- وصف موسع جداً لمحركات البحث (SEO) بالكلمات الرسمية والعامية -->
+    <meta name="description" content="نظام الاستعلامات المتكامل في مصر: استعلام عن لوحة السيارة، معرفة بيانات الرقم القومي، حاسبة فاتورة الكهرباء، حساب أقساط القروض، حصة التموين والعيش، استحقاق الدعم الحكومي، رسوم الخدمات الحكومية، تحويل وحدات القياس، حساب الفرق بين تاريخين، تحديد منشأ المنتج بالباركود، حساب الوزن المثالي والسعرات الحرارية، حساب العمر بدقة، ومولد أكواد شحن كروت الاتصالات. لو بتدور على: استعلام عن رخصة عربية، معرفة بيانات شخص بالرقم القومي، حساب فاتورة النور، حاسبة قروض البنوك والتقسيط، ازاي اعرف نصيبي في التموين، حساب استحقاق تكافل وكرامة، استعلام عن مخالفات المرور، تحويل الكيلو للرطل، معرفة بلد المنشأ من الباركود، حاسبة السعرات الحرارية، حساب العمر باليوم والشهر والسنة، وشحن رصيد الموبايل. موقعنا هو دليلك الشامل لكل الخدمات الحكومية والحسابية السريعة في مصر.">
+    
+    <title>نظام الاستعلامات المتكامل</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+<div class="main-wrapper" id="main-content">
+    <div class="contact-header">
+        <p>المحاولة الأولى مجانية | الكود اليومي: 5 ج | الكود الشهري: 20 ج</p>
+        <p>للتفعيل تواصل معنا عبر: 
+            <a href="https://wa.me/201030842085" target="_blank" style="color: #00ff00; text-decoration: underline; font-weight: bold;">واتساب 01030842085</a>
+        </p>
+    </div>
+
+    <div id="services-wrapper" style="display:none;">
+        <div class="service-card">
+            <h2>الاستعلام عن لوحة السيارة</h2>
+            <input type="text" id="vLetters" placeholder="الحروف" oninput="formatPlateLetters(this)">
+            <input type="text" id="vNumbers" placeholder="الأرقام" oninput="formatPlateNumbers(this)">
+            <button onclick="resPlate()">استعلام</button>
+            <div id="outCar" class="result-area"></div>
+        </div>
+
+        <div class="service-card">
+            <h2>تحليل الرقم القومي</h2>
+            <input type="text" id="nID" placeholder="14 رقماً" maxlength="14">
+            <button onclick="resNID()">تحليل</button>
+            <div id="outNID" class="result-area"></div>
+        </div>
+
+        <div class="service-card">
+            <h2>حاسبة فاتورة الكهرباء (الشرائح المنزلية)</h2>
+            <input type="number" id="kwhInput" placeholder="أدخل حجم الاستهلاك بالكيلووات (kWh)">
+            <button onclick="resElectricity()">احسب الفاتورة</button>
+            <div id="outElectricity" class="result-area"></div>
+        </div>
+
+        <div class="service-card">
+            <h2>حاسبة القروض والتقسيط الشهري</h2>
+            <input type="number" id="loanAmount" placeholder="مبلغ القرض / السلعة بالجنيه">
+            <input type="number" id="loanYears" placeholder="مدة السداد (بالسنوات)">
+            <input type="number" id="interestRate" placeholder="نسبة الفائدة السنوية %" step="0.1">
+            <button onclick="resLoan()">احسب القسط</button>
+            <div id="outLoan" class="result-area"></div>
+        </div>
+
+        <div class="service-card">
+            <h2>حساب حصة التموين والعيش بالتفصيل</h2>
+            <input type="number" id="familyMembers" placeholder="عدد أفراد بطاقة التموين" min="1">
+            <button onclick="resTamween()">احسب الحصة التموينية</button>
+            <div id="outTamween" class="result-area"></div>
+        </div>
+
+        <div class="service-card">
+            <h2>حاسبة استحقاق الدعم (تقديرية)</h2>
+            <input type="number" id="incomeInput" placeholder="إجمالي الدخل الشهري للأسرة (جنيه)">
+            <button onclick="resSubsidy()">تحليل الاستحقاق</button>
+            <div id="outSubsidy" class="result-area"></div>
+        </div>
+
+        <div class="service-card">
+            <h2>الاستعلام عن الرسوم الحكومية</h2>
+            <select id="govServiceSelect" style="width: 100%; margin-bottom: 10px; padding: 8px;">
+                <option value="">-- اختر الخدمة --</option>
+            </select>
+            <button onclick="resGovServiceBtn()">عرض الرسوم</button>
+            <div id="outGovFees" class="result-area" style="display:none; margin-top:10px;"></div>
+        </div>
+
+        <div class="service-card">
+            <h2>محول وحدات القياس</h2>
+            <input type="number" id="valInput" placeholder="أدخل القيمة">
+            <select id="unitType"><option value="kg_lb">كيلو إلى رطل</option><option value="m_ft">متر إلى قدم</option></select>
+            <button onclick="resUnits()">تحويل</button>
+            <div id="outUnits" class="result-area"></div>
+        </div>
+
+        <div class="service-card">
+            <h2>حاسبة الفرق بين تاريخين</h2>
+            <input type="date" id="dateStart">
+            <input type="date" id="dateEnd">
+            <button onclick="resDateDiff()">احسب الفرق</button>
+            <div id="outDateDiff" class="result-area"></div>
+        </div>
+
+        <div class="service-card">
+            <h2>تحديد منشأ المنتج (الباركود)</h2>
+            <input type="text" id="barcodeInput" placeholder="اكتب الباركود كاملاً">
+            <button onclick="resBarcode()">كشف المنشأ</button>
+            <div id="outBarcode" class="result-area"></div>
+        </div>
+
+        <div class="service-card">
+            <h2>حاسبة الوزن المثالي والسعرات اليومية</h2>
+            <input type="number" id="bmiWeight" placeholder="الوزن (كيلوجرام)">
+            <input type="number" id="bmiHeight" placeholder="الطول (سنتيمتر)">
+            <input type="number" id="bmiAge" placeholder="العمر (بالسنوات)">
+            <select id="bmiGender"><option value="male">ذكر</option><option value="female">أنثى</option></select>
+            <button onclick="resBMR()">تحليل كتلة الجسم والسعرات</button>
+            <div id="outBMR" class="result-area"></div>
+        </div>
+
+        <div class="service-card">
+            <h2>حاسبة العمر الدقيقة</h2>
+            <input type="date" id="birthDate">
+            <button onclick="resAge()">احسب العمر</button>
+            <div id="outAge" class="result-area"></div>
+        </div>
+
+        <div class="service-card">
+            <h2>مولد أكواد شحن الخطوط السريع</h2>
+            <select id="telecomCompany"><option value="vodafone">فودافون</option><option value="orange">أورنج</option><option value="etisalat">اتصالات</option><option value="we">وي</option></select>
+            <input type="text" id="scratchCardCode" placeholder="أدخل كود الكارت هنا">
+            <button onclick="resChargeCode()">توليد كود الشحن</button>
+            <div id="outCharge" class="result-area"></div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="logoutAdmin()" style="background:#ff4444; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer;">خروج من النظام</button>
+        </div>
+    </div>
+
+    <div id="activation-area" class="service-card" style="display:none;">
+        <h2>النسخة مغلقة - تواصل للتجديد</h2>
+        <input type="text" id="activationCode" placeholder="أدخل كود التفعيل">
+        <button onclick="checkActivation()">تفعيل</button>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
