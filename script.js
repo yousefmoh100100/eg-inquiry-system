@@ -88,7 +88,7 @@ window.onload = function() {
             govData.forEach(item => {
                 let opt = document.createElement("option");
                 opt.value = item.name;
-                opt.innerHTML = item.name; // تم إزالة السعر من هنا
+                opt.innerHTML = item.name;
                 select.appendChild(opt);
             });
         }
@@ -207,9 +207,15 @@ function resTamween() {
     markServiceUsed("التموين");
 }
 
+function parseDateInput(str) {
+    const parts = str.split('-');
+    if (parts.length !== 3) return null;
+    return new Date(parts[2], parts[0] - 1, parts[1]);
+}
+
 function resAge() {
     if (!checkAccess("العمر")) return;
-    const birthDate = new Date(document.getElementById("birthDate").value);
+    const birthDate = parseDateInput(document.getElementById("birthDate").value);
     const today = new Date();
     const out = document.getElementById("outAge");
     if (!birthDate || birthDate > today) { out.style.display = "block"; out.innerHTML = "تاريخ غير صحيح."; return; }
@@ -290,8 +296,8 @@ function resUnits() {
 
 function resDateDiff() {
     if (!checkAccess("التاريخ")) return;
-    const d1 = new Date(document.getElementById("dateStart").value);
-    const d2 = new Date(document.getElementById("dateEnd").value);
+    const d1 = parseDateInput(document.getElementById("dateStart").value);
+    const d2 = parseDateInput(document.getElementById("dateEnd").value);
     const diff = Math.ceil(Math.abs(d2 - d1) / (1000 * 60 * 60 * 24));
     const out = document.getElementById("outDateDiff");
     out.style.display = "block";
