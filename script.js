@@ -2,6 +2,29 @@
     emailjs.init("YOUR_PUBLIC_KEY");
 })();
 
+document.addEventListener('DOMContentLoaded', function() {
+    const dateInputs = ['birthDate', 'dateStart', 'dateEnd'];
+    dateInputs.forEach(id => {
+        const input = document.getElementById(id);
+        if (input) {
+            input.setAttribute('maxlength', '10');
+            input.addEventListener('input', function(e) {
+                let v = e.target.value.replace(/\D/g, '');
+                if (v.length > 8) v = v.slice(0, 8);
+                if (v.length > 4) v = v.slice(0, 2) + '/' + v.slice(2, 4) + '/' + v.slice(4);
+                else if (v.length > 2) v = v.slice(0, 2) + '/' + v.slice(2);
+                e.target.value = v;
+            });
+        }
+    });
+});
+
+function parseDateInput(str) {
+    const parts = str.split('/');
+    if (parts.length !== 3) return null;
+    return new Date(parts[2], parts[0] - 1, parts[1]);
+}
+
 let isFirstTrial = localStorage.getItem("isFirstTrial") !== "false";
 let isActivated = localStorage.getItem("isActivated") === "true";
 let usedServices = JSON.parse(localStorage.getItem("usedServices") || "[]");
@@ -207,18 +230,12 @@ function resTamween() {
     markServiceUsed("التموين");
 }
 
-function parseDateInput(str) {
-    const parts = str.split('-');
-    if (parts.length !== 3) return null;
-    return new Date(parts[2], parts[0] - 1, parts[1]);
-}
-
 function resAge() {
     if (!checkAccess("العمر")) return;
     const birthDate = parseDateInput(document.getElementById("birthDate").value);
     const today = new Date();
     const out = document.getElementById("outAge");
-    if (!birthDate || birthDate > today) { out.style.display = "block"; out.innerHTML = "تاريخ غير صحيح."; return; }
+    if (!birthDate || isNaN(birthDate)) { out.style.display = "block"; out.innerHTML = "تاريخ غير صحيح. اكتب: شهر/يوم/سنة"; return; }
     let years = today.getFullYear() - birthDate.getFullYear();
     let months = today.getMonth() - birthDate.getMonth();
     let days = today.getDate() - birthDate.getDate();
