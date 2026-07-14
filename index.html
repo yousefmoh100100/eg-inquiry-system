@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <meta name="description" content="نظام الاستعلامات المتكامل في مصر: استعلام عن لوحة السيارة، معرفة بيانات الرقم القومي، حاسبة فاتورة الكهرباء، حساب أقساط القروض، حصة التموين والعيش، استحقاق الدعم الحكومي، رسوم الخدمات الحكومية، تحويل وحدات القياس، حساب الفرق بين تاريخين، تحديد منشأ المنتج بالباركود، حساب الوزن المثالي والسعرات الحرارية، حساب العمر بدقة، ومولد أكواد شحن كروت الاتصالات. لو بتدور على: استعلام عن رخصة عربية، معرفة بيانات شخص بالرقم القومي، حساب فاتورة النور، حاسبة قروض البنوك والتقسيط، ازاي اعرف نصيبي في التموين، حساب استحقاق تكافل وكرامة، استعلام عن مخالفات المرور، تحويل الكيلو للرطل، معرفة بلد المنشأ من الباركود، حاسبة السعرات الحرارية، حساب العمر باليوم والشهر والسنة، وشحن رصيد الموبايل. موقعنا هو دليلك الشامل لكل الخدمات الحكومية والحسابية السريعة في مصر.">
     
     <title>نظام الاستعلامات المتكامل</title>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -84,8 +83,8 @@
 
         <div class="service-card">
             <h2>حاسبة الفرق بين تاريخين</h2>
-            <input type="text" id="dateStart" placeholder="البداية (سنة-شهر-يوم)">
-            <input type="text" id="dateEnd" placeholder="النهاية (سنة-شهر-يوم)">
+            <input type="text" id="dateStart" placeholder="البداية (شهر-يوم-سنة)">
+            <input type="text" id="dateEnd" placeholder="النهاية (شهر-يوم-سنة)">
             <button onclick="resDateDiff()">احسب الفرق</button>
             <div id="outDateDiff" class="result-area"></div>
         </div>
@@ -109,7 +108,7 @@
 
         <div class="service-card">
             <h2>حاسبة العمر الدقيقة</h2>
-            <input type="text" id="birthDate" placeholder="تاريخ الميلاد (سنة-شهر-يوم)">
+            <input type="text" id="birthDate" placeholder="تاريخ الميلاد (شهر-يوم-سنة)">
             <button onclick="resAge()">احسب العمر</button>
             <div id="outAge" class="result-area"></div>
         </div>
