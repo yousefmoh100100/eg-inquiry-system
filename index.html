@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام الاستعلامات المتكامل | أدوات خدمية وحسابية سريعة</title>
+    <meta name="description" content="منصة خدمية متكاملة تتيح لك الاستعلام عن لوحة السيارة، تحليل الرقم القومي المصري، حساب فاتورة الكهرباء، تقدير الدعم وحصة التموين، حساب القروض والوزن المثالي بدقة وسهولة.">
+    <meta name="keywords" content="استعلام لوحة السيارة, تحليل الرقم القومي, حساب فاتورة الكهرباء, حاسبة التموين, حاسبة القروض والتقسيط, حاسبة العمر, حاسبة الوزن المثالي, كود شحن الخطوط">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="نظام الاستعلامات المتكامل | أدوات خدمية وحسابية">
+    <meta property="og:description" content="استعلم عن لوحات السيارات، حلل الرقم القومي، واحسب فاتورة الكهرباء والتموين والقروض في مكان واحد مجاناً.">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    
-    <title>نظام الاستعلامات المتكامل</title>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
 <div class="main-wrapper" id="main-content">
-    <div class="contact-header">
+    <header class="contact-header">
         <p>المحاولة الأولى مجانية | الكود اليومي: 5 ج | الكود الشهري: 20 ج</p>
         <p>للتفعيل تواصل معنا عبر: 
             <a href="https://wa.me/201030842085" target="_blank" style="color: #00ff00; text-decoration: underline; font-weight: bold;">واتساب 01030842085</a>
         </p>
-    </div>
+    </header>
 
-    <div id="services-wrapper" style="display:none;">
+    <main id="services-wrapper" style="display:none;">
         <div class="service-card">
             <h2>الاستعلام عن لوحة السيارة</h2>
             <input type="text" id="vLetters" placeholder="الحروف" oninput="formatPlateLetters(this)">
@@ -124,7 +129,7 @@
         <div style="text-align: center; margin-top: 20px;">
             <button onclick="logoutAdmin()" style="background:#ff4444; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer;">خروج من النظام</button>
         </div>
-    </div>
+    </main>
 
     <div id="activation-area" class="service-card" style="display:none;">
         <h2>النسخة مغلقة - تواصل للتجديد</h2>
