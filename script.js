@@ -26,6 +26,12 @@ function parseDateInput(str) {
 }
 
 let isFirstTrial = localStorage.getItem("isFirstTrial") !== "false";
+let isActivated = localStorage.getItem("isActivated") === "true";
+let usedServices = JSON.parse(localStorage.getItem("usedServices") || "[]");
+
+const mainDeveloperCode = "8978008978";
+const dailyCodes = ["DAY9102", "DAY4821", "DAY7305", "DAY1198", "DAY6543", "DAY8812", "DAY3097", "DAY5521", "DAY4076", "DAY9234"];
+const monthlyCodes = ["MON8832", "MON1945", "MON7621", "MON5540", "MON3391", "MON8072", "MON2219", "MON6684", "MON4405", "MON9152"];
 
 const plateGovs = {
     "أ": "القاهرة", "ب": "القاهرة", "ج": "القاهرة", "د": "القاهرة", "ه": "القاهرة", "و": "القاهرة", "ى": "القاهرة",
